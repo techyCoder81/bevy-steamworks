@@ -110,6 +110,7 @@ pub enum SteamworksEvent {
     UserStatsReceived(steamworks::UserStatsReceived),
     UserStatsStored(steamworks::UserStatsStored),
     ValidateAuthTicketResponse(steamworks::ValidateAuthTicketResponse),
+    ValidateAuthTicketForWebApiResponse(steamworks::TicketForWebApiResponse),
 }
 
 macro_rules! register_event_callbacks {
@@ -187,7 +188,8 @@ impl Plugin for SteamworksPlugin {
                         UserAchievementStored,
                         UserStatsReceived,
                         UserStatsStored,
-                        ValidateAuthTicketResponse
+                        ValidateAuthTicketResponse,
+                        ValidateAuthTicketForWebApiResponse,
                     ))
                     .insert_non_send_resource(single)
                     .add_event::<SteamworksEvent>()
